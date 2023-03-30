@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="container">
+<!-- 聊天室 -->
+<!-- <view class="gpt-chat-container"> -->
+<scroll-view class="gpt-chat-container" scroll-y="true" scroll-top="{{scrollTop}}">
+  <view wx:for="{{QA}}">
+    <view class="gpt-chat-item {{item.role === 'assistant' ? 'ai' : ''}}">
+      <view class="avator {{item.role === 'assistant' ? 'ai' : ''}}">{{item.role === 'assistant' ? '' : 'user'}}</view>
+      <text class="message">{{item.content}}</text>
+    </view>
+  </view>
+   <view wx:if="{{QA[QA.length-1].role === 'user'}}" class="dot-loader-item">
+    <view class="gpt-chat-item ai">
+      <view class="avator ai"></view>
+      <text class="message">
+        <text class="dot-loader">.</text>
+        <text class="dot-loader dot-loader--2">.</text>
+        <text class="dot-loader dot-loader--3">.</text>
+      </text>
+    </view>
+  </view>
+</scroll-view>
+<!-- </view> -->
+<!-- 输入框 -->
+  <view class="gpt-input-container">
+    <view class="gpt-input-operation">
+      <input class="gpt-input" value="{{inputVal}}" confirm-type="send" adjust-position="{{false}}" bindconfirm="bindconfirm"/>
+    </view>
+    <view class="gpt-tips">Robo Mar 14 Version. Free Research Preview. Our goal is to make AI systems more natural and safe to interact with. Your feedback will help us improve.
+    </view>
+  </view>
+  <!-- loading -->
+  <view class="loading">
+    <image 
+    class="loading-logo"
+    src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1626231075038x198861132171598940%2Fopenai-1523664-1290202.png?w=&h=&auto=compress&dpr=1&fit=max"></image>
+    <text class="loading-txt">Please stand by, while we are checking your browser...</text>
+  </view>
+</view>
